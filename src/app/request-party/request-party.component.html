@@ -1,0 +1,31 @@
+<p>request-party works!</p>
+
+<mat-card class="example-result-card" style="min-width: 334px;    min-height: 500px;margin-top: 11px;">
+<mat-card-content>
+
+
+
+
+
+  </mat-card-content>
+
+       <mat-progress-bar *ngIf="isCompletedCountry" mode="indeterminate"></mat-progress-bar>
+
+    <div *ngFor="let item of data; index as i;">
+		<mat-card style="    height: 104px;min-width: 320px;">
+
+			<span style="float: left;">Organized By : {{item.name}}</span><br>
+<!-- 			<span style="float: right;">Budget : {{item.Budget}}</span><br>
+ -->			<span style="float: right;">Budget : {{item.Budget}}  Rating : {{item.Rating}}
+ <button id="btn_{{i}}" class="request" [class.spinner]="loading" style="margin-left: 5px;" (click)="request(item , i)" mat-raised-button color="primary">{{item.btnLbl}}</button>
+
+   
+
+ </span>
+
+		</mat-card>
+
+		<br>
+	</div>
+
+  </mat-card>

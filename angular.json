@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/bollywood-trending",
+            "outputPath": "dist/share-party",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -24,9 +24,13 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/bootstrap/dist/css/bootstrap.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/jquery/dist/jquery.js",
+              "./node_modules/bootstrap/dist/js/bootstrap.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -62,18 +66,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "bollywood-trending:build"
+            "browserTarget": "share-party:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "bollywood-trending:build:production"
+              "browserTarget": "share-party:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "bollywood-trending:build"
+            "browserTarget": "share-party:build"
           }
         },
         "test": {
@@ -114,14 +118,14 @@
           },
           "configurations": {
             "production": {
-              "devServerTarget": "bollywood-trending:serve:production"
+              "devServerTarget": "share-party:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "bollywood-trending",
+  "defaultProject": "share-party",
   "cli": {
     "analytics": "d76d6b8f-b702-4d7d-bc32-632c7ea1a2b0"
   }

@@ -79,6 +79,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
         MatToolbarModule,
         MatIconModule,
         MatSidenavModule,
+        MatSliderModule,
         MatBadgeModule,
         MatListModule,
         MatGridListModule,
@@ -91,7 +92,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
         MatTooltipModule,
         MatTableModule,
         MatPaginatorModule,
-        MatExpansionModule
+        MatExpansionModule,
+        MatSlideToggleModule,
+        MatProgressBarModule
     ],
     providers: [
         MatDatepickerModule,

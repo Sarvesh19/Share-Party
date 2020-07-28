@@ -1,33 +1,40 @@
-<div style="height: 80vh;">
-  <mat-toolbar color="primary">
+<div >
+  <mat-toolbar style="background-color: #1bbbf7!important;color: white;">
     <mat-toolbar-row>
       <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
         <mat-icon>menu</mat-icon>
       </button>
-      <span>BollywoodTrending</span>
+      <span> <img style="    height: 42px;" src="assets/party.jpg"> Let's Party</span>
       <span class="menu-spacer"></span>
+      
+      <a fxShow="true" fxHide.gt-sm href="#" mat-button (click)="logout()"><i style="    font-size: 29px;" class="fa fa-sign-out" aria-hidden="true"></i>
+      </a>
+    
       <div fxShow="true" fxHide.lt-md>
         <!-- The following menu items will be hidden on both SM and XS screen sizes -->
-        <a href="#" mat-button>Menu Item 1</a>
-        <a href="#" mat-button>Menu Item 2</a>
+        <a href="#" mat-button (click)="logout()"><i style="    font-size: 29px;" class="fa fa-sign-out" aria-hidden="true"></i>
+      </a>
+        <!-- <a href="#" mat-button>Login</a>
         <a href="#" mat-button>Menu Item 3</a>
         <a href="#" mat-button>Menu Item 4</a>
         <a href="#" mat-button>Menu Item 5</a>
-        <a href="#" mat-button>Menu Item 6</a>
+        <a href="#" mat-button>Menu Item 6</a> -->
       </div>
     </mat-toolbar-row>
   </mat-toolbar>
 
-  <mat-sidenav-container fxFlexFill>
+  <mat-sidenav-container fxFlexFill style="background-color: white;    width: 198px;">
     <mat-sidenav #sidenav>
+
       <mat-nav-list>
         <a (click)="sidenav.toggle()" href="" mat-list-item>Close</a>
-        <a href="#" mat-list-item>Menu Item 1</a>
-        <a href="#" mat-list-item>Menu Item 2</a>
+        <a href="#" mat-list-item>Home</a>
+       <!--  <a href="#" mat-list-item>Menu Item 2</a>
         <a href="#" mat-list-item>Menu Item 3</a>
         <a href="#" mat-list-item>Menu Item 4</a>
         <a href="#" mat-list-item>Menu Item 5</a>
-        <a href="#"mat-list-item>Menu Item 6</a>
+        <a href="#"mat-list-item>Menu Item 6</a> -->
+
       </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content fxFlexFill>
@@ -36,21 +43,23 @@
   <div *ngIf="i==index && !loading" [@flyInOut] [ngClass]="'background div'+i">
   </div>
 </ng-container>
-<div *ngIf="loading" class="background div0"></div>
+<!-- <div *ngIf="loading" class="background div0"></div>
+ -->
 
-
-   <div style="font: 500 20px/32px Roboto, 'Helvetica Neue', sans-serif;text-align: center;
+  <!--  <div style="font: 500 20px/32px Roboto, 'Helvetica Neue', sans-serif;text-align: center;
     margin-top: 50%;
     color: white;
-    font-size: 31px;"> Bollywood Trending</div>
+    font-size: 31px;"> Let's Party</div> -->
 
-
+<!--     <login-form></login-form>
+ -->
+  <router-outlet></router-outlet>
 
   </mat-sidenav-content>
   </mat-sidenav-container>
 
-  <div class="footer">
-   <p>BollywoodTrending.in<br>
+  <div class="footer" fxShow="true" fxHide.lt-md>
+   <p style="padding-top: 32px;">Let's Party<br>
       <span id="socialMedia">
       <span><i class="fa fa-facebook-square" style="cursor: pointer;"  aria-hidden="true"></i>
       </span> 
@@ -61,7 +70,8 @@
       <span style="margin-left: 10px"><i style="cursor: pointer;" class="fa fa-linkedin"  aria-hidden="true"></i>
       </span>
       </span><br>
-<!--       <span>Feedback : sarvesh.y305@gmail.com</span>
- -->   </p>
+  </p>
 </div>
 </div>
+
+

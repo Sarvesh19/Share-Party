@@ -1,0 +1,141 @@
+<!-- <mat-card style="margin:2em;padding-top:0;padding-left:0;padding-right:0">
+            <mat-card-title>Login</mat-card-title>
+      <mat-card-content>
+        <form [formGroup]="form" (ngSubmit)="submit()">
+          <p>
+            <mat-form-field>
+              <input type="text" matInput placeholder="Username" formControlName="username">
+            </mat-form-field>
+          </p>
+
+          <p>
+            <mat-form-field>
+              <input type="password" matInput placeholder="Password" formControlName="password">
+            </mat-form-field>
+          </p>
+
+          <p *ngIf="error" class="error">
+            {{ error }}
+          </p>
+
+          <div class="button">
+            <button style="background-color: " type="submit" mat-button>Login</button>
+          </div>
+
+        </form>
+      </mat-card-content>
+    </mat-card> -->
+
+<!-- Default form login -->
+    <mat-card fxShow="true" fxHide.lt-md>
+<form class="text-center border border-light p-5" [formGroup]="form" (ngSubmit)="submit($event)" required>
+
+  <p class="h4 mb-4">Sign in</p>
+
+  <!-- Email -->
+  <input type="email" id="defaultLoginFormEmail" formControlName="username" class="form-control mb-4" placeholder="E-mail" required>
+  
+
+  <!-- Password -->
+  <input type="password" id="defaultLoginFormPassword" formControlName="password" class="form-control mb-4" placeholder="Password">
+  <!-- <div *ngIf="form.invalid && (form.dirty || form.touched)"
+    class="alert alert-danger">
+    Passowrd is required. 
+  </div>  -->
+  <div *ngIf="form.invalid && (form.dirty || form.touched) || !form.value"
+    class="alert alert-danger">
+    UserName & Password are required. 
+  </div> 
+
+  <div class="d-flex justify-content-around">
+    <div>
+      <!-- Remember me -->
+      <mdb-checkbox [default]="true">Remember me</mdb-checkbox>
+    </div>
+    <div>
+      <!-- Forgot password -->
+      <a href="">Forgot password?</a>
+    </div>
+  </div>
+
+  <!-- Sign in button -->
+  <button mdbBtn color="info" block="true" class="my-4" type="submit">Sign in</button>
+
+  <!-- Register -->
+  <p>Not a member?
+    <a href="">Register</a>
+  </p>
+
+  <!-- Social login -->
+  <p>or sign in with:</p>
+
+  <a type="button" class="light-blue-text mx-2">
+    <i class="fa fa-facebook-square"></i>
+  </a>
+  <a type="button" class="light-blue-text mx-2">
+     <i class="fa fa-twitter"></i>
+  </a>
+  <a type="button" class="light-blue-text mx-2">
+    <i class="fa fa-linkedin"></i>
+  </a>
+  
+
+</form>
+    </mat-card>
+
+
+<form fxFlexFill fxShow="true" fxHide.gt-sm class="text-center border border-light p-5" [formGroup]="form" (ngSubmit)="submit($event)">
+
+  <p class="h4 mb-4">Sign in</p>
+
+  <!-- Email -->
+  <input type="email" id="defaultLoginFormEmail1" formControlName="username" class="form-control mb-4" placeholder="E-mail" required>
+
+  <!-- Password -->
+  <input type="password" id="defaultLoginFormPassword1" formControlName="password" class="form-control mb-4" placeholder="Password" required>
+
+  <div *ngIf="form.invalid && (form.dirty || form.touched) || !form.value"
+    class="alert alert-danger">
+    UserName & Password are required. 
+  </div> 
+
+  <div class="d-flex justify-content-around" >
+    <div>
+      <!-- Remember me -->
+      <mdb-checkbox [default]="true">Remember me</mdb-checkbox>
+    </div>
+    <div>
+      <!-- Forgot password -->
+      <a href="">Forgot password?</a>
+    </div>
+  </div>
+
+  <!-- Sign in button -->
+  <button mdbBtn color="info" block="true" class="my-4" type="submit">Sign in</button>
+
+  <!-- Register -->
+  <p>Not a member?
+    <a href="">Register</a>
+  </p>
+
+  <!-- Social login -->
+  <p>or sign in with:</p>
+
+  <a type="button" class="light-blue-text mx-2">
+    <i class="fa fa-facebook-square"></i>
+  </a>
+  <a type="button" class="light-blue-text mx-2">
+     <i class="fa fa-twitter"></i>
+  </a>
+  <a type="button" class="light-blue-text mx-2">
+    <i class="fa fa-linkedin"></i>
+  </a>
+  
+
+</form>
+
+
+
+
+
+<!-- Default form login -->

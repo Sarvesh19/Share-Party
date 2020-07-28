@@ -1,0 +1,42 @@
+<p style="text-align: end;margin-right: 5px;">Welcome, {{user.username}}</p>
+<div>
+	<div class="date-pick" style="text-align: center;">
+<!-- 	<span>Select Date Range : </span>
+ -->
+<mat-form-field class="example-form-field" appearance="fill">
+  <mat-label>Select Date Range</mat-label>
+  <mat-date-range-input
+    [formGroup]="campaignOne"
+    [rangePicker]="campaignOnePicker">
+    <input matStartDate placeholder="Start date" formControlName="start">
+    <input matEndDate placeholder="End date" formControlName="end">
+  </mat-date-range-input>
+  <mat-datepicker-toggle matSuffix [for]="campaignOnePicker"></mat-datepicker-toggle>
+  <mat-date-range-picker #campaignOnePicker></mat-date-range-picker>
+
+
+
+</mat-form-field>
+<br fxFlexFill fxShow="true" fxHide.gt-sm>
+  	<span style="margin-left: 5px">Select Distance : </span>
+  	<mat-slider [(ngModel)]=distanceSelect></mat-slider>
+	<span>{{distanceSelect}} KM</span>
+         <button style="margin-left: 5px;" (click)="searchParty()" mat-raised-button color="primary">Go</button>
+         <span style="margin-left: 5px;">Or</span>
+         <button style="margin-left: 5px;" (click)="CreateParty()" mat-raised-button color="primary">Create Party</button>
+
+        <!--  <i style="font-size: 40px;
+    margin-top: 17px;
+    float: right;
+    margin-right: 7px;" class="fa fa-plus" aria-hidden="true"></i> -->
+
+   <router-outlet></router-outlet>
+
+
+
+</div>
+
+  
+</div>
+
+
