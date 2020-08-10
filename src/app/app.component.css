@@ -36,14 +36,15 @@ section {
 }
 .footer {
    position: fixed;
-   top:-15px;
+   height: 54px !important;
+   /*top:-15px;*/
    left: 0;
    bottom: 0;
    width: 100%;
    height: 100px;
    margin-top: 50%;
 /*       background-color: steelblue;
-*/          background-color: #1bbbf7!important;
+*/          background-color: #173642!important;
    color: white;
    text-align: center;
      font-family: Roboto, "Helvetica Neue", sans-serif;
@@ -59,5 +60,12 @@ section {
 
 ::ng-deep.mat-card:not([class*=mat-elevation-z]) {
     box-shadow: 0px 2px 1px -1px rgb(210 203 203), 0px 1px 6px 0px rgb(142 131 131), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+}
+
+footer{ 
+  position:absolute; 
+  bottom:0; 
+  width:100%; 
+  height:100px; 
 }
 

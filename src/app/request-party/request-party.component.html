@@ -1,31 +1,96 @@
 <!-- <p>request-party works!</p>
  -->
-<mat-card class="example-result-card" style="min-width: 334px;    min-height: 500px;margin-top: 11px;">
-<mat-card-content>
+<!-- <div>
+<mat-form-field class="example-form-field" appearance="fill">
+  <mat-label>Select Date Range</mat-label>
+  <mat-date-range-input
+    [formGroup]="campaignOne"
+    [rangePicker]="campaignOnePicker">
+    <input matStartDate placeholder="Start date" formControlName="start">
+    <input matEndDate placeholder="End date" formControlName="end">
+  </mat-date-range-input>
+  <mat-datepicker-toggle matSuffix [for]="campaignOnePicker"></mat-datepicker-toggle>
+  <mat-date-range-picker #campaignOnePicker></mat-date-range-picker>
+
+
+
+</mat-form-field>
+
+<br fxFlexFill fxShow="true" fxHide.gt-sm>
+    <span style="margin-left: 5px">Select Distance : </span>
+    <mat-slider [(ngModel)]=distanceSelect></mat-slider>
+  <span>{{distanceSelect}} KM</span>
+         <button style="margin-left: 5px;" (click)="searchParty()" mat-raised-button color="primary">Go</button>
+         <span style="margin-left: 5px;">Or</span>
+         <button style="margin-left: 5px;" (click)="CreateParty()" mat-raised-button color="primary">Create Party</button>
+
+         </div> -->
+
+<!--      <mat-progress-bar mode="indeterminate" *ngIf="isPartyCreated"></mat-progress-bar>
+ -->
+
+         <div>
+          	<span><i style="font-size: 36px;margin-left: 8px;cursor: pointer;
+    margin-top: 8px;" (click)="backToHome()" class="fa fa-chevron-left" aria-hidden="true"></i>
+    <p style="text-align: end;margin-right: 5px;margin-top: -34px;">Welcome, {{user.firstName}}</p>
+
+	</span>
+
+
+          </div>
+     <mat-progress-bar mode="indeterminate" *ngIf="isPartyCreated"></mat-progress-bar>
 
 
 
 
 
-  </mat-card-content>
 
-       <mat-progress-bar *ngIf="isCompletedCountry" mode="indeterminate"></mat-progress-bar>
+<div class="example-result-card" style="   margin-top: 11px;text-align: -webkit-center;">
+<!-- <mat-card-content>
+ -->
+<mat-spinner *ngIf="loading" style="margin-top: 150px;"></mat-spinner>
 
-    <div *ngFor="let item of data; index as i;">
-		<mat-card style="    height: 104px;min-width: 320px;">
 
-			<span style="float: left;">Organized By : {{item.name}}</span><br>
-<!-- 			<span style="float: right;">Budget : {{item.Budget}}</span><br>
- -->			<span style="float: right;">Budget : {{item.Budget}}  Rating : {{item.Rating}}
- <button id="btn_{{i}}" class="request" [class.spinner]="loading" style="margin-left: 5px;" (click)="request(item , i)" mat-raised-button color="primary">{{item.btnLbl}}</button>
 
+<!--   </mat-card-content>
+ -->
+       <div *ngIf="noData" style="text-align: center;
+    margin-top: 200px;">No Recard Found. Try with Different Filter. </div>
+    <!-- <div > -->
+		<mat-card *ngFor="let item of data; index as i;" style="contain: content;">
+			<div id="insidecard">
+			<div>
+				<span style="float: left;">Organized By : {{item.organizedBy}}</span><br>
+				<span style="float: left;">Party Date : {{item.party_date | date:'dd/MM/yyyy'}}</span>
+			</div>
+			<br>
+
+ 				<div>
+ 								<span style="float: left;">Party Start : {{item.party_strat}}</span><span style="float: left;">Party End : {{item.party_end}}</span><br>
+   			 </div>
+   			 <div>
+			<span style="float: left;">Organizer Contact : {{item.organizerContact}}</span><br>
+
+						<span style="float: left;">Description : {{item.description}}</span><br>
+ 			<span style="float: left;">Approx Nearby : {{item.approxDist}}KM</span>
+
+
+ 			<span style="float: left;">Budget : ${{item.per_head}}  Rating : {{item.Rating}}</span>
+			<span style="float: left;">City : {{item.city}}</span>
+
+
+ <!-- <button id="btn_{{i}}" class="request" [class.spinner]="loading" style="margin-left: 5px;" (click)="request(item , i)" mat-raised-button color="primary">{{item.btnLbl}}</button> -->
+<button id="btn" class="request" [class.spinner]="loading" style="margin-left: 5px;float: right;" (click)="request(item , i)" mat-raised-button color="primary">Request</button>
    
 
- </span>
-
-		</mat-card>
-
-		<br>
+</div>
 	</div>
+		</mat-card>
+		<br>
+		
+	<!-- </div> -->
 
-  </mat-card>
+
+
+  </div>
+

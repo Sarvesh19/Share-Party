@@ -1,0 +1,87 @@
+
+<!-- Default form register -->
+    <form style="width: fit-content;
+    margin: 0 auto;" class="text-center border border-light p-5" [formGroup]="register" (ngSubmit)="registerFunc($event)">
+
+      <p class="h4 mb-4">Sign up</p>
+
+      <div class="form-row mb-4">
+        <div class="col">
+          <!-- First name -->
+          <input type="text" id="defaultRegisterFormFirstName" formControlName="firstName" class="form-control" placeholder="First name" required>
+        </div>
+        <div class="col">
+          <!-- Last name -->
+          <input type="text" id="defaultRegisterFormLastName" formControlName="lastName" class="form-control" placeholder="Last name" required>
+        </div>
+      </div>
+
+	<input type="text" id="defaultRegisterFormCity" formControlName="user_city" class="form-control mb-4" placeholder="City" required>
+      <!-- E-mail -->
+      <input type="email" id="defaultRegisterFormEmail" formControlName="email" class="form-control mb-4" placeholder="E-mail" required>
+      <span style="float: left;">Favourite Color :</span>
+      <input type="text" id="defaultRegisterSecurity1" formControlName="security1_ans" class="form-control mb-4" placeholder="Security 1 Answer" required>
+
+ 	  <span style="float: left;">Best Friend :</span>
+      <input type="text" id="defaultRegisterSecurity2" formControlName="security2_ans" class="form-control mb-4" placeholder="Security 2 Answer" required>
+
+      <!-- Password -->
+      <input type="password" id="defaultRegisterFormPassword" formControlName="password" class="form-control" placeholder="Password" aria-describedby="defaultRegisterFormPasswordHelpBlock" required>
+      <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
+        At least 8 characters and 1 digit
+      </small>
+
+      <!-- Phone number -->
+      <input type="text" id="defaultRegisterPhone" formControlName="user_number" class="form-control" placeholder="Phone number" aria-describedby="defaultRegisterFormPhoneHelpBlock">
+      <br>
+      <div *ngIf="notFilled"
+    class="alert alert-danger">
+    Please Fill all mandatory fields. 
+  	</div> 
+
+
+      <!-- Newsletter -->
+      <div class="row">
+        <div class="col-md-6 mx-auto d-flex justify-content-center">
+          <mdb-checkbox [default]="true">Subscribe to our newsletter</mdb-checkbox>
+        </div>
+      </div>
+
+      <div class="row mt-5">
+  <div class="col-md-9 mx-auto">
+      <div class="card mt-3">
+<!--           <div class="card-body">
+ -->              <div #recaptcha ></div>
+<!--           </div>
+ -->      </div>
+  </div>
+</div>
+
+      <!-- Sign up button -->
+      <button mdbBtn color="info" block="true" class="my-4" type="submit">Sign up</button>
+
+      <!-- Social register -->
+      <p>or sign up with:</p>
+
+      <a type="button" class="light-blue-text mx-2">
+        <mdb-icon fab icon="facebook"></mdb-icon>
+      </a>
+      <a type="button" class="light-blue-text mx-2">
+        <mdb-icon fab icon="twitter"></mdb-icon>
+      </a>
+      <a type="button" class="light-blue-text mx-2">
+        <mdb-icon fab icon="linkedin"></mdb-icon>
+      </a>
+      <a type="button" class="light-blue-text mx-2">
+        <mdb-icon fab icon="github"></mdb-icon>
+      </a>
+
+      <hr>
+
+      <!-- Terms of service -->
+      <p>By clicking
+        <em>Sign up</em> you agree to our
+        <a href="" target="_blank">terms of service</a></p>
+
+    </form>
+    <!-- Default form register -->

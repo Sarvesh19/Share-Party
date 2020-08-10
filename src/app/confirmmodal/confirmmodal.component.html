@@ -1,0 +1,11 @@
+<div *ngIf="!permission_denied" mat-dialog-content>
+  Session time Out
+
+  <button style="border: 2px solid #e7e7e7; font-family: sans-serif;" class="btn-confirm" mat-button  (click)="onNoClick()" cdkFocusInitial>Ok</button>
+</div>
+
+<div *ngIf="permission_denied" mat-dialog-content>
+Please Allow location for better result !
+  <button style="border: 2px solid #e7e7e7; font-family: sans-serif;float: right;
+    margin-top: 45px;" class="btn-confirm" mat-button  (click)="closePermission()" cdkFocusInitial>Ok</button>
+</div>

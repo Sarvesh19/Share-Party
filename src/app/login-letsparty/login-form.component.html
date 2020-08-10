@@ -27,7 +27,7 @@
     </mat-card> -->
 
 <!-- Default form login -->
-    <mat-card fxShow="true" fxHide.lt-md>
+    <mat-card >
 <form class="text-center border border-light p-5" [formGroup]="form" (ngSubmit)="submit($event)" required>
 
   <p class="h4 mb-4">Sign in</p>
@@ -46,6 +46,12 @@
     class="alert alert-danger">
     UserName & Password are required. 
   </div> 
+  <div *ngIf="wrongPassword" class="alert alert-danger">
+    <span>Wrong username or password. Try again</span>
+  </div>
+  <div *ngIf="mandatory" class="alert alert-danger">
+    <span>Please enter username and password.</span>
+  </div>
 
   <div class="d-flex justify-content-around">
     <div>
@@ -54,16 +60,16 @@
     </div>
     <div>
       <!-- Forgot password -->
-      <a href="">Forgot password?</a>
+      <a style=" color: #007bff; cursor: pointer;" (click)="forgotPassoword()">Forgot password?</a>
     </div>
   </div>
 
   <!-- Sign in button -->
-  <button mdbBtn color="info" block="true" class="my-4" type="submit">Sign in</button>
+  <button style="background-color: #32748c!important;color: white" mdbBtn  block="true" class="my-4" type="submit">Sign in</button>
 
   <!-- Register -->
   <p>Not a member?
-    <a href="">Register</a>
+    <a (click)="register()" style=" color: #007bff; cursor: pointer;">Register</a> 
   </p>
 
   <!-- Social login -->
@@ -84,14 +90,12 @@
     </mat-card>
 
 
-<form fxFlexFill fxShow="true" fxHide.gt-sm class="text-center border border-light p-5" [formGroup]="form" (ngSubmit)="submit($event)">
+<!-- <form fxFlexFill fxShow="true" fxHide.gt-sm class="text-center border border-light p-5" [formGroup]="form" (ngSubmit)="submit($event)">
 
   <p class="h4 mb-4">Sign in</p>
 
-  <!-- Email -->
   <input type="email" id="defaultLoginFormEmail1" formControlName="username" class="form-control mb-4" placeholder="E-mail" required>
 
-  <!-- Password -->
   <input type="password" id="defaultLoginFormPassword1" formControlName="password" class="form-control mb-4" placeholder="Password" required>
 
   <div *ngIf="form.invalid && (form.dirty || form.touched) || !form.value"
@@ -101,24 +105,19 @@
 
   <div class="d-flex justify-content-around" >
     <div>
-      <!-- Remember me -->
       <mdb-checkbox [default]="true">Remember me</mdb-checkbox>
     </div>
     <div>
-      <!-- Forgot password -->
       <a href="">Forgot password?</a>
     </div>
   </div>
 
-  <!-- Sign in button -->
   <button mdbBtn color="info" block="true" class="my-4" type="submit">Sign in</button>
 
-  <!-- Register -->
   <p>Not a member?
-    <a href="">Register</a>
+    <a (click)="register()">Register</a>
   </p>
 
-  <!-- Social login -->
   <p>or sign in with:</p>
 
   <a type="button" class="light-blue-text mx-2">
@@ -132,7 +131,7 @@
   </a>
   
 
-</form>
+</form>  -->
 
 
 

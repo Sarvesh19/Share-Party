@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
     isCompletedCountry = false;
     items = [];
     requestBtnLbl: string = 'Request';
-
+    todayDate:Date = new Date();
 
   getSliderTickInterval(): number | 'auto' {
     return ;
@@ -36,19 +36,34 @@ export class HomeComponent implements OnInit {
   data: Array<object> = [];
 
   constructor(private router : Router) {
+    this.todayDate = new Date();
+
+
 	const today = new Date();
     const month = today.getMonth();
     const year = today.getFullYear();
 
 
     this.campaignOne = new FormGroup({
-      start: new FormControl(new Date(year, month, 13)),
-      end: new FormControl(new Date(year, month, 16))
+      start: new FormControl(new Date(year, month, today.getDate())),
+      end: new FormControl(new Date(year, month, today.getDate() +5))
     });
 
    }
 
   ngOnInit(): void {
+    if((sessionStorage.getItem('start') || sessionStorage.getItem('end'))  && sessionStorage.getItem('distance')){
+      // this.campaignOne.value.start = ;
+      // this.campaignOne.value.end = ;
+
+    this.campaignOne = new FormGroup({
+      start: new FormControl(new Date(Date.parse(sessionStorage.getItem('start')))),
+      end: new FormControl(new Date(Date.parse(sessionStorage.getItem('end'))))
+    });
+
+
+      this.distanceSelect = +sessionStorage.getItem('distance');
+    }
 
 
 	//this.user = localStorage.getItem('currentUser');
@@ -64,6 +79,10 @@ export class HomeComponent implements OnInit {
   logout() {
         // remove user from local storage to log user out
         localStorage.removeItem('currentUser');
+        sessionStorage.removeItem('start');
+        sessionStorage.removeItem('end');
+        sessionStorage.removeItem('distance');
+
     }
 
     
@@ -92,7 +111,14 @@ export class HomeComponent implements OnInit {
 	}
 
 	searchParty(){
-		this.router.navigate(['search-party']);
+        sessionStorage.setItem("start",this.campaignOne.value.start);
+        sessionStorage.setItem("end",this.campaignOne.value.end);
+        sessionStorage.setItem("distance",this.distanceSelect+"");
+
+		this.router.navigate(['search-party'], { 
+        state: { startdate: this.campaignOne.value.start, enddate : this.campaignOne.value.end,
+        distance : this.distanceSelect} 
+    });
 	}
 
 

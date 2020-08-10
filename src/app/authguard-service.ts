@@ -4,12 +4,15 @@ import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from
 @Injectable()
 export class AuthGuard implements CanActivate {
 
-    constructor(private router: Router) { }
+    constructor(private router: Router) {
+
+        console.info(router);
+     }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
          let user = JSON.parse(localStorage.getItem('currentUser'));
 
-        if (localStorage.getItem('currentUser') && user.username === 'sarvesh' && user.password==='12345') {
+        if (localStorage.getItem('currentUser')) {
 
              //this.router.navigate(['test']);
 

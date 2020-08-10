@@ -1,47 +1,124 @@
 <!-- <p>create-party works!</p>
  -->
 
-<mat-card class="example-result-card" style="min-width: 334px;    min-height: 500px;margin-top: 11px;">
-<mat-card-content>
+<!-- <mat-card class="example-result-card" style="min-width: 334px;    min-height: 500px;margin-top: 11px;">
+<mat-card-content> -->
+ <!-- <div>
 
-<span>Party Mode : <mat-form-field class="example-full-width">
-    <input matInput placeholder="Ex. Ladies Night" >
-  </mat-form-field></span>   <br>  
-
-<span>Party per head Budget : <mat-form-field class="example-full-width">
-    <input matInput type="number" placeholder="Ex. $25" >
-  </mat-form-field></span>    <br>
-
-<span>Address : <mat-form-field class="example-full-width">
-    <input matInput  >
-  </mat-form-field></span>   <br>  
-
-<span>Description : <mat-form-field class="example-full-width">
-    <input matInput placeholder="Ex. About Party" >
-  </mat-form-field></span>    <br> 
+<mat-form-field class="example-form-field" appearance="fill">
+  <mat-label>Select Date Range</mat-label>
+  <mat-date-range-input
+    [formGroup]="campaignOne"
+    [rangePicker]="campaignOnePicker">
+    <input matStartDate placeholder="Start date" formControlName="start">
+    <input matEndDate placeholder="End date" formControlName="end">
+  </mat-date-range-input>
+  <mat-datepicker-toggle matSuffix [for]="campaignOnePicker"></mat-datepicker-toggle>
+  <mat-date-range-picker #campaignOnePicker></mat-date-range-picker>
 
 
-<span>Party Date :</span>  <mat-form-field appearance="fill">
-  <mat-label>Choose a date</mat-label>
-<!-- #docregion toggle -->
-  <input matInput [matDatepicker]="picker">
+
+</mat-form-field>
+
+<br fxFlexFill fxShow="true" fxHide.gt-sm>
+    <span style="margin-left: 5px">Select Distance : </span>
+    <mat-slider [(ngModel)]=distanceSelect></mat-slider>
+  <span>{{distanceSelect}} KM</span>
+         <button style="margin-left: 5px;" (click)="searchParty()" mat-raised-button color="primary">Go</button>
+         <span style="margin-left: 5px;">Or</span>
+         <button style="margin-left: 5px;" (click)="CreateParty()" mat-raised-button color="primary">Create Party</button>
+
+         </div> -->
+
+         <div>
+            <span>
+              <i style="font-size: 36px;margin-left: 8px;cursor: pointer;
+    margin-top: 8px;" (click)="backToHome()" class="fa fa-chevron-left" aria-hidden="true">
+              </i>
+                  <p style="text-align: end;margin-right: 5px;margin-top: -34px;">Welcome, {{user.firstName}}</p>
+
+          </span>
+
+
+          </div>
+
+
+<div style="margin-top: 5px">
+     <mat-progress-bar mode="indeterminate" *ngIf="isPartyCreated"></mat-progress-bar>
+
+</div>
+  <form class="text-center border border-light p-5" [formGroup]="createParty" (ngSubmit)="CreateParty($event)" style="width: fit-content;
+    margin: 0 auto;min-width: 500px;" [ngClass]="isMobile? 'mobile-class':'desk-class'">
+
+  <tr> 
+    <td align="right">Party Mode :</td>
+    <td align="left"><input formControlName="party_theme" matInput placeholder="Ex. Ladies Night" ></td>
+  </tr>   <br>  
+
+  <tr>
+    <td align="right">Party per head Budget : </td>
+    <td align="left"><input formControlName="per_head" matInput type="number" placeholder="Ex. $25" ></td>
+  </tr> <br>
+  <tr>
+    <td align="right">Limit Head Count : </td>
+    <td align="left"><input formControlName="total_participation" matInput type="number" placeholder="Ex. 4" ></td>
+  </tr><br>
+
+<tr>
+  <td align="right">Address :</td>
+   <td align="left"> <input matInput formControlName="address" placeholder="Ex. C-4,Barker Street,NY"></td>
+  </tr>   <br>  
+
+  <tr>
+  <td align="right">City :</td>
+   <td align="left"> <input matInput formControlName="city" placeholder="New York"></td>
+  </tr> <br>
+
+<tr><td align="right">Description : </td>
+    <td align="left"><input matInput formControlName="description" placeholder="Ex. About Party" ></td>
+  </tr>    <br> 
+
+<tr>
+<td align="right">Party Date :</td>  
+<td align="left">
+<!--   <mat-label>Choose a date</mat-label>
+ #docregion toggle -->
+  <input matInput [matDatepicker]="picker" [(ngModel)]="datePicker" formControlName="party_date">
+  </td>
+  <td>
   <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
   <mat-datepicker #picker></mat-datepicker>
+  </td>
 <!-- #enddocregion toggle -->
-</mat-form-field><br>
+</tr>
+<br>
 
-<span>Party Start Time : <mat-form-field class="example-full-width">
-    <input matInput type="time"  value="Sushi">
-  </mat-form-field></span>     <br>
+<tr>
+  <td align="right">Party Start Time : </td>
+    <td align="left"><input matInput type="time" formControlName="party_start" value="party_start"></td>
+  </tr>     <br>
 
-<span>Party End Time : <mat-form-field class="example-full-width">
-    <input type="time" matInput  value="Sushi">
-  </mat-form-field></span>  <br>   
+<tr><td align="right">Party End Time :</td>
+    <td align="left"><input type="time" matInput formControlName="party_end" value="party_end"></td>
+  </tr>  <br>  
+<tr>
+
+</tr>
+
+<tr>
+<td>
+</td>
+<td>
+    <button style="float: left;" mat-raised-button color="primary" type="submit">Create Party</button>
+
+</td>
+
+</tr>
+</form>
 
 
-<button style="margin-left: 5px;" (click)="CreateParty()" mat-raised-button color="primary">Create Party</button>
+  <!-- </mat-card-content>  
+ 
 
-  </mat-card-content>
+  </mat-card> -->
 
-
-  </mat-card>

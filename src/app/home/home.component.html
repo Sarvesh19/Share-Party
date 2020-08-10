@@ -1,6 +1,6 @@
-<p style="text-align: end;margin-right: 5px;">Welcome, {{user.username}}</p>
+<p style="text-align: end;margin-right: 5px;">Welcome, {{user.firstName}}</p>
 <div>
-	<div class="date-pick" style="text-align: center;">
+	<div class="date-pick" style="text-align: center;margin-top: 184px;">
 <!-- 	<span>Select Date Range : </span>
  -->
 <mat-form-field class="example-form-field" appearance="fill">
@@ -8,12 +8,12 @@
   <mat-date-range-input
     [formGroup]="campaignOne"
     [rangePicker]="campaignOnePicker">
-    <input matStartDate placeholder="Start date" formControlName="start">
-    <input matEndDate placeholder="End date" formControlName="end">
+    <input [min]="todayDate" matStartDate placeholder="Start date" formControlName="start">
+    <input matEndDate [min]="todayDate" placeholder="End date" formControlName="end">
   </mat-date-range-input>
   <mat-datepicker-toggle matSuffix [for]="campaignOnePicker"></mat-datepicker-toggle>
   <mat-date-range-picker #campaignOnePicker></mat-date-range-picker>
-
+ 
 
 
 </mat-form-field>

@@ -1,27 +1,35 @@
 <div >
-  <mat-toolbar style="background-color: #1bbbf7!important;color: white;">
+  <mat-toolbar style="background-color: #215d73!important;color: white;">
     <mat-toolbar-row>
       <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
         <mat-icon>menu</mat-icon>
       </button>
-      <span> <img style="    height: 42px;" src="assets/party.jpg"> Let's Party</span>
+      <span style="cursor: pointer;" (click)="routeToLogin()"> <img style="  color: white;  height: 42px;" src="assets/party.jpg">Share Party</span>
       <span class="menu-spacer"></span>
-      
-      <a fxShow="true" fxHide.gt-sm href="#" mat-button (click)="logout()"><i style="    font-size: 29px;" class="fa fa-sign-out" aria-hidden="true"></i>
+      <span  *ngIf="showloggedIn" [matMenuTriggerFor]="beforeMenu" style="cursor: pointer;"><i class="fa fa-user" aria-hidden="true" style="color: white;font-size: 23px;" ></i></span>
+      <mat-menu #beforeMenu="matMenu" xPosition="before">
+        <span mat-menu-item (click)="userProfile()">Profile</span>
+        <span mat-menu-item (click)="home()">Home</span>
+        <span mat-menu-item>Settings</span>
+         <span mat-menu-item (click)="logout()">Log Out</span>
+      </mat-menu> 
+<!-- 
+      <a *ngIf="showloggedIn" fxShow="true" fxHide.gt-sm  mat-button (click)="logout()"><i style="    font-size: 29px;" class="fa fa-sign-out" aria-hidden="true"></i>
       </a>
     
-      <div fxShow="true" fxHide.lt-md>
-        <!-- The following menu items will be hidden on both SM and XS screen sizes -->
-        <a href="#" mat-button (click)="logout()"><i style="    font-size: 29px;" class="fa fa-sign-out" aria-hidden="true"></i>
-      </a>
-        <!-- <a href="#" mat-button>Login</a>
+      <div *ngIf="showloggedIn" fxShow="true" fxHide.lt-md>
+        <a  mat-button (click)="logout()"><i style="    font-size: 29px;" class="fa fa-sign-out" aria-hidden="true"></i>
+      </a> 
+        <a href="#" mat-button>Login</a>
         <a href="#" mat-button>Menu Item 3</a>
         <a href="#" mat-button>Menu Item 4</a>
         <a href="#" mat-button>Menu Item 5</a>
-        <a href="#" mat-button>Menu Item 6</a> -->
-      </div>
+        <a href="#" mat-button>Menu Item 6</a> 
+      </div>-->
     </mat-toolbar-row>
   </mat-toolbar>
+
+  
 
   <mat-sidenav-container fxFlexFill style="background-color: white;    width: 198px;">
     <mat-sidenav #sidenav>
@@ -57,9 +65,9 @@
 
   </mat-sidenav-content>
   </mat-sidenav-container>
-
-  <div class="footer" fxShow="true" fxHide.lt-md>
-   <p style="padding-top: 32px;">Let's Party<br>
+<!-- <footer>FOOTER</footer>
+ -->   <div class="footer" fxShow="true" fxHide.lt-md >
+   <p >Share Party<br>
       <span id="socialMedia">
       <span><i class="fa fa-facebook-square" style="cursor: pointer;"  aria-hidden="true"></i>
       </span> 
@@ -71,7 +79,7 @@
       </span>
       </span><br>
   </p>
-</div>
+</div> 
 </div>
 
 
