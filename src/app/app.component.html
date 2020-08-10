@@ -31,7 +31,7 @@
 
   
 
-  <mat-sidenav-container fxFlexFill style="background-color: white;    width: 198px;">
+  <mat-sidenav-container fxFlexFill style="background-color: white;  height: 700px !important  ;width: 198px;">
     <mat-sidenav #sidenav>
 
       <mat-nav-list>
@@ -45,7 +45,7 @@
 
       </mat-nav-list>
     </mat-sidenav>
-    <mat-sidenav-content fxFlexFill>
+    <mat-sidenav-content fxFlexFill style="height: 700px !important  ;">
 
 <ng-container *ngFor="let i of [0,1,2,3]">
   <div *ngIf="i==index && !loading" [@flyInOut] [ngClass]="'background div'+i">
