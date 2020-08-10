@@ -60,6 +60,11 @@ export class RegisterComponent implements OnInit {
  
   }
 
+  loginRoute(){
+  	    this.router.navigate(['login']);
+
+  }
+
   registerFunc(event : any){
   		this.notFilled = false;
   	    //this.register.value.password = CryptoJS.AES.encrypt("sarvesh", this.register.value.password.trim()).toString();  

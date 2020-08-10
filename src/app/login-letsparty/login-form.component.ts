@@ -19,10 +19,13 @@ export class LoginFormComponent {
   wrongPassword: boolean = false;
   mandatory : boolean  = false;
   showloggedIn : boolean = false;
+    isMobile : boolean = false;
+
 
   constructor(private router: Router, private userLoginService : UserLoginService) {
         sessionStorage.removeItem('username');
         sessionStorage.removeItem('token');
+      this.isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
 if (window.navigator && window.navigator.geolocation) {
         window.navigator.geolocation.getCurrentPosition(

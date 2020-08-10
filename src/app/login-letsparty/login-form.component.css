@@ -37,3 +37,8 @@
     margin-right: 6px;
     /* margin-top: 6px; */
 }
+
+.mobilelogin-class {
+  margin-top: -98px;
+  box-shadow: none !important;
+}
