@@ -27,7 +27,11 @@
     </mat-card> -->
 
 <!-- Default form login -->
-    <mat-card  [ngClass]="isMobile? 'mobilelogin-class':''">
+<div style="text-align: -webkit-center;">
+<mat-spinner *ngIf="loading" style="margin-top: 150px;float: center"></mat-spinner>
+</div>
+
+    <mat-card *ngIf="!loading" [ngClass]="isMobile? 'mobilelogin-class':''">
 <form class="text-center border border-light p-5" [formGroup]="form" (ngSubmit)="submit($event)" required>
 
   <p class="h4 mb-4">Sign in</p>

@@ -1,6 +1,11 @@
 
 <!-- Default form register -->
-    <form style="width: fit-content;
+
+<div style="text-align: -webkit-center;">
+<mat-spinner *ngIf="loading" style="margin-top: 150px;float: center"></mat-spinner>
+</div>
+
+    <form *ngIf="!loading" style="width: fit-content;
     margin: 0 auto;" class="text-center border border-light p-5" [formGroup]="register" (ngSubmit)="registerFunc($event)">
 
       <p class="h4 mb-4">Sign up</p>

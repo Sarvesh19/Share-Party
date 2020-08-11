@@ -28,6 +28,7 @@ export class RegisterComponent implements OnInit {
     
 
   });
+   loading : boolean;
 
   ngOnInit(): void {
   	    this.addRecaptchaScript();
@@ -67,6 +68,7 @@ export class RegisterComponent implements OnInit {
 
   registerFunc(event : any){
   		this.notFilled = false;
+  		this.loading = true;
   	    //this.register.value.password = CryptoJS.AES.encrypt("sarvesh", this.register.value.password.trim()).toString();  
  
   	    if(!this.register.valid){
@@ -83,13 +85,14 @@ export class RegisterComponent implements OnInit {
           let tokenStr= 'Bearer '+data.token;
           sessionStorage.setItem('token', tokenStr);
 			       localStorage.setItem('currentUser', JSON.stringify(data));
-
+			this.loading = true;
 			this.router.navigate(['']);
 
 			console.info(data);
 			
 		},
 			(err: any) => {
+				this.loading = false;
 				console.info(err);
 			//this.isSent = false;
 			}

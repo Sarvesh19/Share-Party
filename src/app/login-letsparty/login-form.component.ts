@@ -20,6 +20,7 @@ export class LoginFormComponent {
   mandatory : boolean  = false;
   showloggedIn : boolean = false;
     isMobile : boolean = false;
+   loading : boolean;
 
 
   constructor(private router: Router, private userLoginService : UserLoginService) {
@@ -80,6 +81,7 @@ if (window.navigator && window.navigator.geolocation) {
   submit(event: any) {
     this.wrongPassword = false;
     this.mandatory = false;
+    this.loading = true;
     let user = { username: this.form.value.username, password: this.form.value.password };
 
    // this.conversionEncryptPassWord = CryptoJS.AES.encrypt("sarvesh", user.password.trim()).toString();  
@@ -90,6 +92,8 @@ if (window.navigator && window.navigator.geolocation) {
       this.userLoginService.getUser(userencrypt).subscribe(data => {
       //this.trendTwitter = data.status;
       //this.isSent = true;
+          this.loading = false;
+
           sessionStorage.setItem('username',data.email);
           let tokenStr= 'Bearer '+data.token;
           sessionStorage.setItem('token', tokenStr);
@@ -103,6 +107,7 @@ if (window.navigator && window.navigator.geolocation) {
       (err: any) => {
         this.wrongPassword = true;
         console.info(err);
+        this.loading = false;
       //this.isSent = false;
       }
 
