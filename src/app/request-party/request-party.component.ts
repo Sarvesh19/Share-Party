@@ -115,9 +115,15 @@ export class RequestPartyComponent implements OnInit {
               this.noData = true;
             }
             //this.openSnackBar("Party Created Successfylly","close");
-          }, (error: Error) => {
+          }, (error: any) => {
             this.isPartyCreated = false;
-          this.noData = true;
+            if(error.error ==='Bad Token'){
+              this.sessionExpired();
+            } else {
+            this.noData = true;
+
+            }
+          this.loading = false;
 
             console.info(error);
           }
@@ -137,10 +143,16 @@ export class RequestPartyComponent implements OnInit {
             }
           this.isPartyCreated = false;
 
-          }, (error: Error) => {
+          }, (error: any) => {
             this.isPartyCreated = false;
-          this.noData = true;
 
+            this.loading = false;
+            if(error.error ==='Bad Token'){
+              this.sessionExpired();
+            } else {
+            this.noData = true;
+
+            }
             console.info(error);
           }
           )
@@ -189,7 +201,20 @@ export class RequestPartyComponent implements OnInit {
   this.router.navigate(['']);
   }
 
+public sessionExpired() {
+        // remove user from local storage to log user out
+         sessionStorage.removeItem('start');
+        sessionStorage.removeItem('end');
+        sessionStorage.removeItem('distance');
+        localStorage.removeItem('currentUser');
+                sessionStorage.removeItem('token');
 
+        sessionStorage.removeItem('username')
+                this.router.navigate(['login']);
+
+
+
+    }
 
 
 

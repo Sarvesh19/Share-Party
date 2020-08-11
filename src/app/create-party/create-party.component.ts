@@ -5,6 +5,9 @@ import { Router, NavigationEnd } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {ConfirmmodalComponent} from '../confirmmodal/confirmmodal.component';
+import {RequestPartyComponent} from '../request-party/request-party.component';
+
+
 @Component({
 	selector: 'app-create-party',
 	templateUrl: './create-party.component.html',
@@ -89,9 +92,11 @@ export class CreatePartyComponent implements OnInit {
 						this.createParty.reset();
 
 						this.openSnackBar("Party Created Successfylly","close");
-					}, (error: Error) => {
+					}, (error: any) => {
 						this.isPartyCreated = false;
-
+						if(error.error ==='Bad Token'){
+              				this.sessionExpired();
+            			}
 						console.info(error);
 					}
 					)
@@ -112,9 +117,11 @@ export class CreatePartyComponent implements OnInit {
 					//this.createParty.reset();
 						//this.openSnackBar("Party Created Successfylly","close");
 
-					}, (error: Error) => {
+					}, (error: any) => {
 						this.isPartyCreated = false;
-
+ 						if(error.error ==='Bad Token'){
+              				this.sessionExpired();
+            			} 
 						console.info(error);
 					}
 					)
@@ -189,5 +196,20 @@ export class CreatePartyComponent implements OnInit {
       this.color = res;
     });
   }
+
+  public sessionExpired() {
+        // remove user from local storage to log user out
+         sessionStorage.removeItem('start');
+        sessionStorage.removeItem('end');
+        sessionStorage.removeItem('distance');
+        localStorage.removeItem('currentUser');
+                sessionStorage.removeItem('token');
+
+        sessionStorage.removeItem('username')
+                this.router.navigate(['login']);
+
+
+
+    }
 
 }

@@ -30,8 +30,8 @@ btnLabel = 'Edit';
 		}
   		},(error :any)=>{
   			if(error.error === 'Bad Token'){
-  				this.router.navigate(['login']);
-  			}
+				this.sessionExpired();			
+			}
   			console.info(error);
   		})
 
@@ -89,5 +89,20 @@ editUser(){
 
 
 }
+
+public sessionExpired() {
+        // remove user from local storage to log user out
+         sessionStorage.removeItem('start');
+        sessionStorage.removeItem('end');
+        sessionStorage.removeItem('distance');
+        localStorage.removeItem('currentUser');
+                sessionStorage.removeItem('token');
+
+        sessionStorage.removeItem('username')
+                this.router.navigate(['login']);
+
+
+
+    }
 
 }
