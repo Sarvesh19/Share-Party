@@ -4,6 +4,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UserLoginService } from '../user-login-service/user-detail.service';
 import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {ConfirmmodalComponent} from '../confirmmodal/confirmmodal.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-request-party',
@@ -27,7 +28,7 @@ export class RequestPartyComponent implements OnInit {
   loading: boolean = false;
 
   constructor(private router: Router, private userLoginService: UserLoginService
-  ,private dialog: MatDialog) {
+  ,private dialog: MatDialog,private _snackBar: MatSnackBar) {
     this.loading = true;
         this.isPartyCreated = true;
         this.noData = false;
@@ -173,32 +174,42 @@ export class RequestPartyComponent implements OnInit {
       );
     };
 
-    // this.userLoginService.searchParty().subscribe(data => {
- 
-    //   // sessionStorage.setItem('username',data.email);
-    //   //     let tokenStr= 'Bearer '+data.firstName.split('-')[1];
-    //   //     sessionStorage.setItem('token', tokenStr);
-    //   //        localStorage.setItem('currentUser', JSON.stringify(data));
-
-
-    //   console.info(data);
-      
-    // },
-    //   (err: any) => {
-    //     console.info(err);
-    //   }
-
-    // )
     
-    // this.data = data;
     this.isPartyCreated = false;
 
 
 
   }
 
+
+
+  requestFr(data: any, index: number){
+  let jsonObj = {party_id : data.party_id,user_id : data.user_id,message : 'Please accept the request',username :sessionStorage.username};
+
+    this.userLoginService.requestParty(jsonObj).subscribe((data: any) => {
+      console.info(data);
+     this.openSnackBar("Party Requested Successfully","close");
+
+    },(error: any)=>{
+      console.info(error);
+      if('Request Already sent' === error.error){
+     this.openSnackBar("Request Already sent","close");
+
+      }
+
+    }
+
+    );
+  }
+
   backToHome(){
   this.router.navigate(['']);
+  }
+
+  public openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 5000,
+    });
   }
 
 public sessionExpired() {

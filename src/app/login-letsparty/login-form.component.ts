@@ -115,6 +115,7 @@ if (window.navigator && window.navigator.geolocation) {
       // this.submitEM.emit(this.form.value);
     } else {
       this.mandatory = true;
+      this.loading = false;
     }
   }
   register() {

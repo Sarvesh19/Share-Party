@@ -21,3 +21,11 @@
   border-top-color: #000000;
   animation: spinner .8s linear infinite;
 }
+.mobile-map {
+  width:700px;
+  height:500px;
+}
+.desk-map {
+  height: 500px; 
+  width: 700px;
+}

@@ -70,6 +70,12 @@ private baseUri = "https://shareparty.herokuapp.com/";
 
   }
 
+requestParty(requestData): Observable<any>{
+       return this.http.post(this.baseUri + 'requestParty', requestData);
+
+  }
+
+
 
 
 
