@@ -4,7 +4,7 @@
       <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
         <mat-icon>menu</mat-icon>
       </button>
-      <span style="cursor: pointer;" (click)="routeToLogin()"> <img style="  color: white;  height: 42px;" src="assets/party.jpg">Share Party <sup style="font-style: oblique;">dev-0.0.1</sup></span>
+      <span style="cursor: pointer;" (click)="routeToLogin()"> Party Hopper <sup style="font-style: oblique;">dev-0.0.1</sup></span>
       <span class="menu-spacer"></span>
       <span  *ngIf="showloggedIn" [matMenuTriggerFor]="beforeMenu" style="cursor: pointer;"><i class="fa fa-user" aria-hidden="true" style="color: white;font-size: 23px;" ></i></span>
       <mat-menu #beforeMenu="matMenu" xPosition="before">

@@ -156,11 +156,13 @@
                     <div class="card-body" style="overflow-y: scroll;">
                       <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">assignment</i>Upcoming Party</h6>
                       <div *ngFor="let item of partyEntityList; index as i;">
-						<mat-card style="    height: 104px;min-width: 320px;">
+						<mat-card style="    min-width: 320px;contain: content;">
 						<span>Party Date : {{item.party_date  | date:'dd/MM/yyyy'}}</span>
 						<span style="float: left;">City : {{item.city}}</span>
 						<span style="float: right;">Description : {{item.description}}  Party Theme : {{item.party_theme}} 
 	 					</span>
+	 					<span style="float: left;">Longitude : {{item.longitude}}<br> Latitude : {{item.latitude}}</span>
+
 
 						</mat-card>
 
@@ -173,7 +175,7 @@
                   <div class="card h-100">
                     <div class="card-body" style="overflow-y: scroll;">
                       <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">assignment</i>Request</h6>
-                     <div *ngFor="let item of partyEntityList; index as i;">
+                     <!-- <div *ngFor="let item of partyEntityList; index as i;">
 						<mat-card style="    height: 104px;min-width: 320px;">
 						<span>Party Date : {{item.party_date  | date:'dd/MM/yyyy'}}</span>
 						<span style="float: left;">City : {{item.city}}</span>
@@ -183,7 +185,7 @@
 						</mat-card>
 
 						<br>
-					</div>
+					</div> -->
                     </div>
                   </div>
                 </div>

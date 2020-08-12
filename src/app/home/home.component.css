@@ -22,10 +22,10 @@
   animation: spinner .8s linear infinite;
 }
 .mobile-map {
-  width:700px;
-  height:500px;
+  width:100%;
+  height:400px;
 }
 .desk-map {
-  height: 500px; 
+  height: 400px; 
   width: 700px;
 }
