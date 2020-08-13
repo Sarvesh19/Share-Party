@@ -323,21 +323,26 @@ export class HomeComponent implements OnInit {
 	}
 
 	searchParty() {
-    if(this.campaignOne.value !== undefined && this.campaignOne.value.start !== undefined){
+    if(this.campaignOne.value !== null && this.campaignOne.value.start !== null){
         sessionStorage.setItem("start", this.campaignOne.value.start.toDate());
     }
-    if(this.campaignOne.value !== undefined && this.campaignOne.value.end !== undefined){
+    if(this.campaignOne.value !== null && this.campaignOne.value.end !== null && !isNaN(this.campaignOne.value.end)){
         sessionStorage.setItem("end", this.campaignOne.value.end.toDate());
     }
     sessionStorage.setItem("distance", this.distanceSelect + "");
-
+    let endtime: any;
+    if(this.campaignOne.value !== null && (this.campaignOne.value.end === null || isNaN(this.campaignOne.value.end))){
+      endtime = null;
+    } else {
+      endtime = this.campaignOne.value.end.toDate();
+    }
 		this.router.navigate(['search-party'], {
       state: {
-        startdate: this.campaignOne.value.start.toDate(), enddate: this.campaignOne.value.end.toDate(),
+        startdate: this.campaignOne.value.start.toDate(), enddate: endtime,
         distance: this.distanceSelect
       }
     });
-	}
+	} 
 
 
 
