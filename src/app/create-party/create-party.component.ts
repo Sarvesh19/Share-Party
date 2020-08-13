@@ -27,12 +27,12 @@ export class CreatePartyComponent implements OnInit {
 	color: any;
 	userLatitude : any;
 	userLongitude : any;
+	loading : boolean;
 	// venueLongitude : any;
 	// venueLatitude : any;
 
 
 	constructor(private userLoginService: UserLoginService, private _snackBar: MatSnackBar, private router: Router, private dialog: MatDialog) {
-
 		this.isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
 		const today = new Date();
@@ -110,6 +110,8 @@ export class CreatePartyComponent implements OnInit {
 	CreateParty(event: any) {
 		let venueLatitude ;
 		let venueLongitude;
+				this.loading = true;
+
 		if(document.getElementById('coordinateshide') !== null && document.getElementById('coordinateshide').innerText !== undefined){
 			venueLatitude = document.getElementById('coordinateshide').innerText.split('_')[1];
 			venueLongitude= document.getElementById('coordinateshide').innerText.split('_')[0];
@@ -124,7 +126,7 @@ export class CreatePartyComponent implements OnInit {
 		//this.getLatitudeLong();
 		this.isPartyCreated = true;
 		// console.info(this.venueLongitude + " " + this.venueLatitude);
-
+  
 		if (window.navigator && window.navigator.geolocation) {
 			window.navigator.geolocation.getCurrentPosition(
 				position => {
@@ -140,17 +142,21 @@ export class CreatePartyComponent implements OnInit {
 						this.createParty.value.latitude = this.latitude;
 						this.createParty.value.longitude = this.longitude;
 					}
-					
+
 					this.createParty.value.username = sessionStorage.username;
 					// this.createParty.value.party_date = new Date(this.createParty.value.party_date);
 					//console.info(this.createParty.value);
+					this.createParty.value.party_date = this.createParty.value.party_date.toDate();
 					this.userLoginService.createParty(this.createParty.value).subscribe((data: any) => {
 						console.info(data);
 						this.isPartyCreated = false;
 						this.createParty.reset();
+						this.loading = false;
 
 						this.openSnackBar("Party Created Successfylly", "close");
 					}, (error: any) => {
+						this.loading = false;
+
 						this.isPartyCreated = false;
 						if (error.error === 'Bad Token') {
 							this.sessionExpired();
@@ -177,13 +183,19 @@ export class CreatePartyComponent implements OnInit {
 					// this.createParty.value.party_date = new Date(this.createParty.value.party_date);
 
 					//console.info(this.createParty.value);
+					this.createParty.value.party_date = this.createParty.value.party_date.toDate();
+
 					this.userLoginService.createParty(this.createParty.value).subscribe((data: any) => {
 						console.info(data);
+						this.loading = false;
+
 						this.isPartyCreated = false;
 						//this.createParty.reset();
 						//this.openSnackBar("Party Created Successfylly","close");
 
 					}, (error: any) => {
+						this.loading = false;
+
 						this.isPartyCreated = false;
 						if (error.error === 'Bad Token') {
 							this.sessionExpired();

@@ -24,8 +24,9 @@ import { BnNgIdleService } from 'bn-ng-idle';
 import { ConfirmmodalComponent } from './confirmmodal/confirmmodal.component';
 import { UserProfileComponent } from './user-profile/user-profile.component'; // import bn-ng-idle service
 import { AuthHtppInterceptorService } from './auth-intercepter.service';
+import { MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 
-
+ 
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,13 +50,16 @@ import { AuthHtppInterceptorService } from './auth-intercepter.service';
     MatCardModule,
     ReactiveFormsModule,
     MatNativeDateModule,
+    MatMomentDateModule,
     MDBBootstrapModule.forRoot(),
         CheckboxModule, WavesModule, ButtonsModule, InputsModule, IconsModule, CardsModule
   ],
    schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [AuthGuard,BnNgIdleService, {
     provide: HTTP_INTERCEPTORS, useClass: AuthHtppInterceptorService, multi: true
-  }],
+  },
+{ provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: { useUtc: true } }
+  ], 
   bootstrap: [AppComponent]
 })
 export class AppModule { }
