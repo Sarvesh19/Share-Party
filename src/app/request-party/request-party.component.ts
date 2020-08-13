@@ -94,7 +94,7 @@ export class RequestPartyComponent implements OnInit {
         position => {
         this.isPartyCreated = true;
         let partySearch ;
-           if((sessionStorage.getItem('start') || sessionStorage.getItem('end'))  && sessionStorage.getItem('distance')){
+           if((sessionStorage.getItem('start') && sessionStorage.getItem('end') == null)  && sessionStorage.getItem('distance')){
 
              partySearch = {username: this.user.email,distance :+sessionStorage.distance,latitude :position.coords.latitude,
                 startDate : new Date(Date.parse(sessionStorage.getItem('start'))),endDate : new Date(Date.parse(sessionStorage.getItem('end'))),longitude :position.coords.longitude };
