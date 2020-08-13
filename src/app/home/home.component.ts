@@ -323,8 +323,12 @@ export class HomeComponent implements OnInit {
 	}
 
 	searchParty() {
-    sessionStorage.setItem("start", this.campaignOne.value.start.toDate());
-    sessionStorage.setItem("end", this.campaignOne.value.end.toDate());
+    if(this.campaignOne.value !== undefined && this.campaignOne.value.start !== undefined){
+        sessionStorage.setItem("start", this.campaignOne.value.start.toDate());
+    }
+    if(this.campaignOne.value !== undefined && this.campaignOne.value.end !== undefined){
+        sessionStorage.setItem("end", this.campaignOne.value.end.toDate());
+    }
     sessionStorage.setItem("distance", this.distanceSelect + "");
 
 		this.router.navigate(['search-party'], {

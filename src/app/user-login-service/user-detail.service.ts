@@ -17,7 +17,7 @@ export class UserLoginService {
 //private baseUri = "https://toptrending-alt-spring.herokuapp.com/getTrending/";
 
 
-// private baseUri ="http://localhost:8080/"; 
+//private baseUri ="http://localhost:8080/"; 
 private baseUri = "https://shareparty.herokuapp.com/";
   //private herokuURL = 'https://toptrendingnow.herokuapp.com/getTrending/'; 
 
