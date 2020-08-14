@@ -81,6 +81,105 @@ export class RequestPartyComponent implements OnInit {
     data.btnLbl = "Request";
 
   }
+  ngAfterViewInit(){
+
+
+   this.noData = false;
+        this.loading = true;
+            this.isPartyCreated = true;
+
+
+    if (window.navigator && window.navigator.geolocation) {
+      window.navigator.geolocation.getCurrentPosition(
+        position => {
+        this.isPartyCreated = true;
+        let partySearch ;
+           if((localStorage.getItem('start') && localStorage.getItem('end') == null)  && localStorage.getItem('distance')){
+
+             partySearch = {username: this.user.email,distance :+localStorage.distance,latitude :position.coords.latitude,
+                startDate : new Date(Date.parse(localStorage.getItem('start'))),endDate : new Date(Date.parse(localStorage.getItem('end'))),longitude :position.coords.longitude };
+           }else {
+               partySearch = {username: this.user.email,distance :this.distance,latitude :position.coords.latitude,
+                startDate : new Date(Date.parse(localStorage.getItem('start'))),endDate : new Date(Date.parse(localStorage.getItem('end'))),longitude :position.coords.longitude };
+           }
+
+           // sessionStorage.username;
+          // this.createParty.value.party_date = new Date(this.createParty.value.party_date);
+          //console.info(this.createParty.value);
+          this.userLoginService.searchParty(partySearch).subscribe((data: any) => {
+            console.info(data);
+            this.loading = false;
+            this.isPartyCreated = false;
+            this.data = data;
+
+            if(data == null){
+              this.noData = true;
+            }
+            //this.openSnackBar("Party Created Successfylly","close");
+          }, (error: any) => {
+            this.isPartyCreated = false;
+            if(error.error ==='Bad Token'){
+              this.sessionExpired();
+            } else {
+            this.noData = true;
+
+            }
+          this.loading = false;
+
+            console.info(error);
+          }
+          )
+        },
+        error => {
+           this.isPartyCreated = true;
+          
+           // sessionStorage.username;
+          // let partySearch = {username: this.user.email,distance :this.distance,startDate : new Date(Date.parse(localStorage.getItem('start'))),endDate : new Date(Date.parse(localStorage.getItem('end')))};
+          // this.userLoginService.searchParty(partySearch).subscribe((data: any) => {
+          //   console.info(data);
+          //   this.data = data;
+          //   this.loading = false;
+          //    if(data == null){
+          //     this.noData = true;
+          //   }
+          // this.isPartyCreated = false;
+
+          // }, (error: any) => {
+          //   this.isPartyCreated = false;
+
+          //   this.loading = false;
+          //   if(error.error ==='Bad Token'){
+          //     this.sessionExpired();
+          //   } else {
+          //   this.noData = true;
+
+          //   }
+          //   console.info(error);
+          // }
+          // )
+
+          switch (error.code) {
+            case 1:
+              console.log('Permission Denied');
+              this.openDialog('permission_denied');
+              break;
+            case 2:
+              console.log('Position Unavailable');
+              break;
+            case 3:
+              console.log('Timeout');
+              break;
+          }
+        }
+      );
+    };
+
+    
+    this.isPartyCreated = false;
+
+
+    
+  }
 
 
   searchParty() {
@@ -134,29 +233,29 @@ export class RequestPartyComponent implements OnInit {
            this.isPartyCreated = true;
           
            // sessionStorage.username;
-          let partySearch = {username: this.user.email,distance :this.distance,startDate : new Date(Date.parse(localStorage.getItem('start'))),endDate : new Date(Date.parse(localStorage.getItem('end')))};
-          this.userLoginService.searchParty(partySearch).subscribe((data: any) => {
-            console.info(data);
-            this.data = data;
-            this.loading = false;
-             if(data == null){
-              this.noData = true;
-            }
-          this.isPartyCreated = false;
+          // let partySearch = {username: this.user.email,distance :this.distance,startDate : new Date(Date.parse(localStorage.getItem('start'))),endDate : new Date(Date.parse(localStorage.getItem('end')))};
+          // this.userLoginService.searchParty(partySearch).subscribe((data: any) => {
+          //   console.info(data);
+          //   this.data = data;
+          //   this.loading = false;
+          //    if(data == null){
+          //     this.noData = true;
+          //   }
+          // this.isPartyCreated = false;
 
-          }, (error: any) => {
-            this.isPartyCreated = false;
+          // }, (error: any) => {
+          //   this.isPartyCreated = false;
 
-            this.loading = false;
-            if(error.error ==='Bad Token'){
-              this.sessionExpired();
-            } else {
-            this.noData = true;
+          //   this.loading = false;
+          //   if(error.error ==='Bad Token'){
+          //     this.sessionExpired();
+          //   } else {
+          //   this.noData = true;
 
-            }
-            console.info(error);
-          }
-          )
+          //   }
+          //   console.info(error);
+          // }
+          // )
 
           switch (error.code) {
             case 1:
