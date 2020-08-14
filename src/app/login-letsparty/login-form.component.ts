@@ -71,9 +71,9 @@ export class LoginFormComponent {
       //this.isSent = true;
           this.loading = false;
 
-          sessionStorage.setItem('username',data.email);
+          //sessionStorage.setItem('username',data.email);
           let tokenStr= 'Bearer '+data.token;
-          sessionStorage.setItem('token', tokenStr);
+          localStorage.setItem('token', tokenStr);
                     localStorage.setItem('username',data.email);
 
              localStorage.setItem('currentUser', JSON.stringify(data));
