@@ -92,13 +92,13 @@ editUser(){
 
 public sessionExpired() {
         // remove user from local storage to log user out
-         sessionStorage.removeItem('start');
-        sessionStorage.removeItem('end');
-        sessionStorage.removeItem('distance');
+         localStorage.removeItem('start');
+        localStorage.removeItem('end');
+        localStorage.removeItem('distance');
         localStorage.removeItem('currentUser');
-                sessionStorage.removeItem('token');
+                localStorage.removeItem('token');
 
-        sessionStorage.removeItem('username')
+        localStorage.removeItem('username')
                 this.router.navigate(['login']);
 
 

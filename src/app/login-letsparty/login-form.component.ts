@@ -24,32 +24,9 @@ export class LoginFormComponent {
 
 
   constructor(private router: Router, private userLoginService : UserLoginService) {
-        sessionStorage.removeItem('username');
-        sessionStorage.removeItem('token');
+        localStorage.removeItem('username');
+        localStorage.removeItem('token');
       this.isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-
-if (window.navigator && window.navigator.geolocation) {
-        window.navigator.geolocation.getCurrentPosition(
-            position => {
-               // this.geolocationPosition = position,
-               //this.displayLocation(position.coords.latitude,position.coords.longitude);
-                    console.log(position)
-            },
-            error => {
-                switch (error.code) {
-                    case 1:
-                        console.log('Permission Denied');
-                        break;
-                    case 2:
-                        console.log('Position Unavailable');
-                        break;
-                    case 3:
-                        console.log('Timeout');
-                        break;
-                }
-            }
-        );
-    };
 
 
   }
@@ -97,6 +74,8 @@ if (window.navigator && window.navigator.geolocation) {
           sessionStorage.setItem('username',data.email);
           let tokenStr= 'Bearer '+data.token;
           sessionStorage.setItem('token', tokenStr);
+                    localStorage.setItem('username',data.email);
+
              localStorage.setItem('currentUser', JSON.stringify(data));
 
       this.router.navigate(['']); 

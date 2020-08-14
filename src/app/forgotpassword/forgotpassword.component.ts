@@ -39,9 +39,9 @@ export class ForgotpasswordComponent implements OnInit {
 			this.forgotPassForm.value.password = btoa(this.forgotPassForm.value.password.trim());
 			this.userLoginService.forgotPassword(this.forgotPassForm.value).subscribe((data: any)=>{
 				console.info(data);
-				sessionStorage.setItem('username',data.email);
+				localStorage.setItem('username',data.email);
           let tokenStr= 'Bearer '+data.firstName.split('-')[1];
-          sessionStorage.setItem('token', tokenStr);
+          localStorage.setItem('token', tokenStr);
 				 localStorage.setItem('currentUser', JSON.stringify(data));
 
 				this.router.navigate(['']);

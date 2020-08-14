@@ -94,13 +94,13 @@ export class RequestPartyComponent implements OnInit {
         position => {
         this.isPartyCreated = true;
         let partySearch ;
-           if((sessionStorage.getItem('start') && sessionStorage.getItem('end') == null)  && sessionStorage.getItem('distance')){
+           if((localStorage.getItem('start') && localStorage.getItem('end') == null)  && localStorage.getItem('distance')){
 
-             partySearch = {username: this.user.email,distance :+sessionStorage.distance,latitude :position.coords.latitude,
-                startDate : new Date(Date.parse(sessionStorage.getItem('start'))),endDate : new Date(Date.parse(sessionStorage.getItem('end'))),longitude :position.coords.longitude };
+             partySearch = {username: this.user.email,distance :+localStorage.distance,latitude :position.coords.latitude,
+                startDate : new Date(Date.parse(localStorage.getItem('start'))),endDate : new Date(Date.parse(localStorage.getItem('end'))),longitude :position.coords.longitude };
            }else {
                partySearch = {username: this.user.email,distance :this.distance,latitude :position.coords.latitude,
-                startDate : this.startDate,endDate : this.endDate,longitude :position.coords.longitude };
+                startDate : new Date(Date.parse(localStorage.getItem('start'))),endDate : new Date(Date.parse(localStorage.getItem('end'))),longitude :position.coords.longitude };
            }
 
            // sessionStorage.username;
@@ -134,7 +134,7 @@ export class RequestPartyComponent implements OnInit {
            this.isPartyCreated = true;
           
            // sessionStorage.username;
-          let partySearch = {username: this.user.email,distance :this.distance,startDate : this.startDate,endDate : this.endDate};
+          let partySearch = {username: this.user.email,distance :this.distance,startDate : new Date(Date.parse(localStorage.getItem('start'))),endDate : new Date(Date.parse(localStorage.getItem('end')))};
           this.userLoginService.searchParty(partySearch).subscribe((data: any) => {
             console.info(data);
             this.data = data;
@@ -184,7 +184,7 @@ export class RequestPartyComponent implements OnInit {
 
 
   requestFr(data: any, index: number){
-  let jsonObj = {party_id : data.party_id,user_id : data.user_id,message : 'Please accept the request',username :sessionStorage.username};
+  let jsonObj = {party_id : data.party_id,user_id : data.user_id,message : 'Please accept the request',username :localStorage.username};
 
     this.userLoginService.requestParty(jsonObj).subscribe((data: any) => {
       console.info(data);
@@ -217,6 +217,9 @@ public sessionExpired() {
          sessionStorage.removeItem('start');
         sessionStorage.removeItem('end');
         sessionStorage.removeItem('distance');
+         localStorage.removeItem('start');
+        localStorage.removeItem('end');
+        localStorage.removeItem('distance');
         localStorage.removeItem('currentUser');
                 sessionStorage.removeItem('token');
 

@@ -81,9 +81,9 @@ export class RegisterComponent implements OnInit {
   	this.userLoginService.registerUser(this.register.value).subscribe(data => {
 			//this.trendTwitter = data.status;
 			//this.isSent = true;
-			sessionStorage.setItem('username',data.email);
+			localStorage.setItem('username',data.email);
           let tokenStr= 'Bearer '+data.token;
-          sessionStorage.setItem('token', tokenStr);
+          localStorage.setItem('token', tokenStr);
 			       localStorage.setItem('currentUser', JSON.stringify(data));
 			this.loading = true;
 			this.router.navigate(['']);

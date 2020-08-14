@@ -1,4 +1,4 @@
-<div >
+<div class="mainlanding">
   <mat-toolbar style="background-color: #215d73!important;color: white;">
     <mat-toolbar-row>
       <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
@@ -51,20 +51,53 @@
   <div *ngIf="i==index && !loading" [@flyInOut] [ngClass]="'background div'+i">
   </div>
 </ng-container>
-<!-- <div *ngIf="loading" class="background div0"></div>
- -->
 
-  <!--  <div style="font: 500 20px/32px Roboto, 'Helvetica Neue', sans-serif;text-align: center;
-    margin-top: 50%;
-    color: white;
-    font-size: 31px;"> Let's Party</div> -->
-
-<!--     <login-form></login-form>
- -->
   <router-outlet></router-outlet>
+<footer class="page-footer font-small blue" style="position: fixed;height: 54px" fxShow="true" fxHide.gt-sm> 
 
+
+
+   <mat-toolbar style="background-color: #215d73!important;color: white;">
+        <mat-toolbar-row>
+
+
+<tr class="row">
+      <td class="col">
+          <div  *ngIf="showloggedIn"  style="cursor: pointer;text-align: center;"><i class="fa fa-home" aria-hidden="true" style="color: white;font-size: 23px;" ></i><br>
+            <span style="font-size: 18px;">Home</span>
+          </div>
+        </td>
+        <td class="col">
+          <div  *ngIf="showloggedIn"  style="cursor: pointer;text-align: center;"><i class="fa fa-user" aria-hidden="true" style="color: white;font-size: 23px;" ></i>
+            <br>
+            <span style="font-size: 18px;">User</span>
+          </div>
+        </td>
+        <td class="col">
+          <div  *ngIf="showloggedIn"  style="cursor: pointer;text-align: center;"><i class="fa fa-bell" aria-hidden="true" style="color: white;font-size: 23px;" ></i>
+            <br>
+            <span style="font-size: 18px;">Request</span>
+          </div>
+          </td>
+          <td class="col">
+          <div  *ngIf="showloggedIn"  style="cursor: pointer;text-align: center;"><i class="fa fa-star" aria-hidden="true" style="color: white;font-size: 23px;" ></i>
+            <br>
+            <span style="font-size: 18px;">My Party</span>
+          </div>
+          </td>
+</tr>
+
+        </mat-toolbar-row>
+  </mat-toolbar>
+
+
+
+</footer>
   </mat-sidenav-content>
-  </mat-sidenav-container>
+
+
+
+
 <!-- <footer>FOOTER</footer>
  -->   <div class="footer" fxShow="true" fxHide.lt-md >
    <p >Share Party<br>
@@ -80,6 +113,9 @@
       </span><br>
   </p>
 </div> 
+
+  </mat-sidenav-container>
+
 </div>
 
 

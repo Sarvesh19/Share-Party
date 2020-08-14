@@ -48,10 +48,13 @@ constructor(private router: Router,private bnIdle: BnNgIdleService,private dialo
      this.bnIdle.startWatching(60*15).subscribe((isTimedOut: boolean) => {
       if (isTimedOut && sessionStorage.getItem('username')) {
          localStorage.removeItem('currentUser');
-         sessionStorage.removeItem('username')
+         localStorage.removeItem('username')
          sessionStorage.removeItem('start');
         sessionStorage.removeItem('end');
         sessionStorage.removeItem('distance');
+        localStorage.removeItem('start');
+        localStorage.removeItem('end');
+        localStorage.removeItem('distance');
          //this.openDialog();
          this.router.navigate(['login']);
          this.showloggedIn  =true;
@@ -68,8 +71,11 @@ constructor(private router: Router,private bnIdle: BnNgIdleService,private dialo
         sessionStorage.removeItem('distance');
         localStorage.removeItem('currentUser');
                 sessionStorage.removeItem('token');
+                localStorage.removeItem('start');
+        localStorage.removeItem('end');
+        localStorage.removeItem('distance');
 
-        sessionStorage.removeItem('username')
+        localStorage.removeItem('username')
                 this.router.navigate(['login']);
 
 

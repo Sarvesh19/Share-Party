@@ -265,17 +265,17 @@ export class HomeComponent implements OnInit {
 
 
 
-    if ((sessionStorage.getItem('start') || sessionStorage.getItem('end')) && sessionStorage.getItem('distance')) {
+    if ((localStorage.getItem('start') || localStorage.getItem('end')) && localStorage.getItem('distance')) {
       // this.campaignOne.value.start = ;
       // this.campaignOne.value.end = ;
 
       this.campaignOne = new FormGroup({
-        start: new FormControl(new Date(Date.parse(sessionStorage.getItem('start')))),
-        end: new FormControl(new Date(Date.parse(sessionStorage.getItem('end'))))
+        start: new FormControl(new Date(Date.parse(localStorage.getItem('start')))),
+        end: new FormControl(new Date(Date.parse(localStorage.getItem('end'))))
       });
 
 
-      this.distanceSelect = +sessionStorage.getItem('distance');
+      this.distanceSelect = +localStorage.getItem('distance');
     }
 
 
@@ -295,6 +295,9 @@ export class HomeComponent implements OnInit {
     sessionStorage.removeItem('start');
     sessionStorage.removeItem('end');
     sessionStorage.removeItem('distance');
+    localStorage.removeItem('start');
+        localStorage.removeItem('end');
+        localStorage.removeItem('distance');
 
   }
 
@@ -325,16 +328,22 @@ export class HomeComponent implements OnInit {
 	searchParty() {
     if(this.campaignOne.value !== null && this.campaignOne.value.start !== null){
         sessionStorage.setItem("start", this.campaignOne.value.start.toDate());
+        localStorage.setItem('start', this.campaignOne.value.start.toDate());
     }
     if(this.campaignOne.value !== null && this.campaignOne.value.end !== null && !isNaN(this.campaignOne.value.end)){
         sessionStorage.setItem("end", this.campaignOne.value.end.toDate());
+        localStorage.setItem('end', this.campaignOne.value.end.toDate());
     }
     sessionStorage.setItem("distance", this.distanceSelect + "");
+    localStorage.setItem('distance', this.distanceSelect + "");
     let endtime: any;
     if(this.campaignOne.value !== null && (this.campaignOne.value.end === null || isNaN(this.campaignOne.value.end))){
       endtime = null;
     } else {
       endtime = this.campaignOne.value.end.toDate();
+      sessionStorage.setItem("end", endtime);
+      localStorage.setItem('end', endtime);
+
     }
 		this.router.navigate(['search-party'], {
       state: {

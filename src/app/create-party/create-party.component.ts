@@ -143,7 +143,7 @@ export class CreatePartyComponent implements OnInit {
 						this.createParty.value.longitude = this.longitude;
 					}
 
-					this.createParty.value.username = sessionStorage.username;
+					this.createParty.value.username = localStorage.username;
 					// this.createParty.value.party_date = new Date(this.createParty.value.party_date);
 					//console.info(this.createParty.value);
 					this.createParty.value.party_date = this.createParty.value.party_date.toDate();
@@ -179,7 +179,7 @@ export class CreatePartyComponent implements OnInit {
 						this.createParty.value.latitude = this.latitude;
 						this.createParty.value.longitude = this.longitude;
 					}
-					this.createParty.value.username = sessionStorage.username;
+					this.createParty.value.username = localStorage.username;
 					// this.createParty.value.party_date = new Date(this.createParty.value.party_date);
 
 					//console.info(this.createParty.value);
@@ -277,13 +277,13 @@ export class CreatePartyComponent implements OnInit {
 
 	public sessionExpired() {
 		// remove user from local storage to log user out
-		sessionStorage.removeItem('start');
-		sessionStorage.removeItem('end');
-		sessionStorage.removeItem('distance');
+		localStorage.removeItem('start');
+		localStorage.removeItem('end');
+		localStorage.removeItem('distance');
 		localStorage.removeItem('currentUser');
-		sessionStorage.removeItem('token');
+		localStorage.removeItem('token');
 
-		sessionStorage.removeItem('username')
+		localStorage.removeItem('username')
 		this.router.navigate(['login']);
 
 
