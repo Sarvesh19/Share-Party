@@ -12,6 +12,7 @@ import { Observable } from 'rxjs';
 
 export class UserLoginService {
 //Original
+//https://us1.locationiq.com/v1/reverse.php?key=3ce5c0302fb087&lat=19.267584&lon=72.9612288&format=json
 
 //Alternative.  
 //private baseUri = "https://toptrending-alt-spring.herokuapp.com/getTrending/";

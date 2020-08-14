@@ -99,7 +99,7 @@ export class RequestPartyComponent implements OnInit {
              partySearch = {username: this.user.email,distance :+localStorage.distance,latitude :position.coords.latitude,
                 startDate : new Date(Date.parse(localStorage.getItem('start'))),endDate : new Date(Date.parse(localStorage.getItem('end'))),longitude :position.coords.longitude };
            }else {
-               partySearch = {username: this.user.email,distance :this.distance,latitude :position.coords.latitude,
+               partySearch = {username: this.user.email,distance :+localStorage.distance,latitude :position.coords.latitude,
                 startDate : new Date(Date.parse(localStorage.getItem('start'))),endDate : new Date(Date.parse(localStorage.getItem('end'))),longitude :position.coords.longitude };
            }
 
